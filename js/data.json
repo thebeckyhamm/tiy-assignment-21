@@ -1,0 +1,68 @@
+
+[{
+  "Name": "Sam Smith",
+  "Role": "Sales Assoc.",
+  "Manager": "Martin Mindo",
+  "Phone": "555.234.4455",
+  "Dept": "Sales"
+},{
+  "Name": "Tim Tanenbaum",
+  "Role": "Sales Assoc.",
+  "Manager": "Martin Mindo",
+  "Phone": "555.234.3289",
+  "Dept": "Sales"
+},{
+  "Name": "Martin Mindo",
+  "Role": "Sales Manager",
+  "Manager": "Sarah Sagan",
+  "Phone": "555.224.5623",
+  "Dept": "Sales"
+},{
+  "Name": "Sarah Sagan",
+  "Role": "District Manager",
+  "Manager": "Kevin Kagal",
+  "Phone": "555.211.5645",
+  "Dept": "Corp"
+},{
+  "Name": "Kevin Kagal",
+  "Role": "Regional Manager",
+  "Manager": "Deborah Dacosta",
+  "Phone": "555.504.2203",
+  "Dept": "Corp"
+},{
+  "Name": "Deborah Dacosta",
+  "Role": "CSO",
+  "Manager": "Zoey Zapata",
+  "Phone": "555.388.0892",
+  "Dept": "Exec Officers"
+},{
+  "Name": "Zoey Zapata",
+  "Role": "CEO",
+  "Manager": null,
+  "Phone": "555.234.4455",
+  "Dept": "Exec Officers"
+},{
+  "Name": "Frank Fixit",
+  "Role": "IT Support",
+  "Manager": "Jeremiah Jackson",
+  "Phone": "555.222.5476",
+  "Dept": "IT"
+},{
+  "Name": "Penelope Parker",
+  "Role": "In House Developer",
+  "Manager": "Jeremiah Jackson",
+  "Phone": "555.884.4389",
+  "Dept": "IT"
+},{
+  "Name": "Jeremiah Jackson",
+  "Role": "IT Manager",
+  "Manager": "Shannon Salazar",
+  "Phone": "555.234.3876",
+  "Dept": "IT"
+},{
+  "Name": "Shannon Salazar",
+  "Role": "CTO",
+  "Manager": "Zoey Zapata",
+  "Phone": "555.334.8756",
+  "Dept": "Exec Officers"
+}]
