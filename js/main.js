@@ -71,9 +71,26 @@ var Filter = Backbone.View.extend({
 
     template: JST["filter"],
 
+    events: {
+        "click [type='checkbox']" : "_updateCollection"
+    },
+
+    initialize: function() {
+        this.listenTo(this.model, "change", function() {
+            this.render();
+        });
+    },
+
     render: function() {
          this.$el.html( this.template(this.model.toJSON()) );
          return this;
+     },
+
+     _updateCollection: function() {
+        var checkedDept = this.model.get("Name");
+        alert("we want to filter " + checkedDept);
+        this.trigger("refilter");
+        return checkedDept;
      }
 
  });
@@ -84,8 +101,12 @@ var employees = new FilteredEmployees();
 
 $(function(){
 
+    // employees.on("refilter", function() {
+    //     employees.filter()
+    // })
 
-    employees.on("add", function(employee) {
+
+    employees.on("add remove", function(employee) {
         var row = new Row({model: employee});
         $("tbody").append(row.render().el);
     });
@@ -95,25 +116,25 @@ $(function(){
         var uniqKeys;
         var allDepts = [];
 
+
         employees.each(function(employee) {
             allKeys.push(employee.keys());
         });
-
         uniqKeys = _.uniq(_.flatten(allKeys));
 
         var heading = new Heading(uniqKeys);
         heading.render();
 
 
-        allDepts = employees.pluck("Dept");
 
+
+        allDepts = employees.pluck("Dept");
         // found this on stack overflow
         allDepts = _.uniq(allDepts, function(dept){
             return JSON.stringify(dept);
         });
 
         var depts = new Departments(allDepts);
-
 
         depts.each(function(dept) {
             var filter = new Filter({model: dept});
