@@ -6,6 +6,17 @@ var Employees = Backbone.Collection.extend({
 });
 
 
+var Dept = Backbone.Model.extend({});
+var Departments = Backbone.Collection.extend({
+    model: Dept
+});
+
+var FilteredEmployees = Employees.extend({
+
+
+});
+
+
 var Heading = (function() {
 
     var template = JST["th"];
@@ -39,6 +50,22 @@ var Heading = (function() {
     return Heading;
 })();
 
+// var Row = new Backbone.View.extend({
+
+//     template: JST["tr"],
+//     tagName: "tbody",
+
+//     initialize: function() {
+//        this.listenTo(this.model, "change", this.render);
+//      },
+
+//     render: function() {
+//         this.$el.append( template(this.model.toJSON()) );
+//         return this;
+//     }
+
+// });
+
 
 var Row = (function(){
 
@@ -52,18 +79,31 @@ var Row = (function(){
     Row.prototype = {
 
         render: function() {
-            return this.$tbody.append( template(this.model.toJSON()) );
+        return this.$tbody.append( template(this.model.toJSON()) );
+
         }
     };
 
     return Row;
 })();
 
+var Filter = new Backbone.View.extend({
 
-var employees = new Employees();
+//     template: JST["filter"],
+
+//     render: function() {
+//          this.$el.html( this.template(this.model.toJSON()) );
+//          return this;
+//      }
+
+ });
+
+
+var employees = new FilteredEmployees();
 
 
 $(function(){
+
 
     employees.on("add", function(employee) {
         var row = new Row(employee);
@@ -71,7 +111,9 @@ $(function(){
     });
 
     employees.fetch().done(function() {
-        var allKeys = [], uniqKeys;
+        var allKeys = []
+        var uniqKeys;
+        var depts = [];
 
         employees.each(function(employee) {
             allKeys.push(employee.keys());
@@ -81,6 +123,21 @@ $(function(){
 
         var heading = new Heading(uniqKeys);
         heading.render();
+
+
+        depts = employees.pluck("Dept");
+        depts = _.uniq(depts);
+        depts = _.map(depts, function(dept) {
+            return {filter: dept};
+        });
+
+        // _.each(depts, function(dept){
+        //     var filter = new Filter({model: dept});
+        //     $(".filters").append(filter.render().el);
+            
+        // });
+
+
     });
 
 });

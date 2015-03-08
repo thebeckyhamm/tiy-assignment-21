@@ -4,65 +4,98 @@
   "Role": "Sales Assoc.",
   "Manager": "Martin Mindo",
   "Phone": "555.234.4455",
-  "Dept": "Sales"
+  "Dept": {
+    "Name": "Sales",
+    "Icon": "money"
+  }
 },{
   "Name": "Tim Tanenbaum",
   "Role": "Sales Assoc.",
   "Manager": "Martin Mindo",
   "Phone": "555.234.3289",
-  "Dept": "Sales"
+  "Dept": {
+    "Name": "Sales",
+    "Icon": "money"
+  }
 },{
   "Name": "Martin Mindo",
   "Role": "Sales Manager",
   "Manager": "Sarah Sagan",
   "Phone": "555.224.5623",
-  "Dept": "Sales"
+  "Dept": {
+    "Name": "Sales",
+    "Icon": "money"
+  }
 },{
   "Name": "Sarah Sagan",
   "Role": "District Manager",
   "Manager": "Kevin Kagal",
   "Phone": "555.211.5645",
-  "Dept": "Corp"
+  "Dept": {
+    "Name": "Corp",
+    "Icon": "building-o"
+  }
 },{
   "Name": "Kevin Kagal",
   "Role": "Regional Manager",
   "Manager": "Deborah Dacosta",
   "Phone": "555.504.2203",
-  "Dept": "Corp"
+  "Dept": {
+    "Name": "Corp",
+    "Icon": "building-o"
+  }
 },{
   "Name": "Deborah Dacosta",
   "Role": "CSO",
   "Manager": "Zoey Zapata",
   "Phone": "555.388.0892",
-  "Dept": "Exec Officers"
+  "Dept": {
+    "Name": "Exec Officers",
+    "Icon": "users"
+  }
 },{
   "Name": "Zoey Zapata",
   "Role": "CEO",
   "Manager": null,
   "Phone": "555.234.4455",
-  "Dept": "Exec Officers"
+  "Dept": {
+    "Name": "Exec Officers",
+    "Icon": "users"
+  }
 },{
   "Name": "Frank Fixit",
   "Role": "IT Support",
   "Manager": "Jeremiah Jackson",
   "Phone": "555.222.5476",
-  "Dept": "IT"
+  "Dept": {
+    "Name": "IT",
+    "Icon": "laptop"
+  }
 },{
   "Name": "Penelope Parker",
   "Role": "In House Developer",
   "Manager": "Jeremiah Jackson",
   "Phone": "555.884.4389",
-  "Dept": "IT"
+  "Dept": {
+    "Name": "IT",
+    "Icon": "laptop"
+  }
 },{
   "Name": "Jeremiah Jackson",
   "Role": "IT Manager",
   "Manager": "Shannon Salazar",
   "Phone": "555.234.3876",
-  "Dept": "IT"
+  "Dept": {
+    "Name": "IT",
+    "Icon": "laptop"
+  }
 },{
   "Name": "Shannon Salazar",
   "Role": "CTO",
   "Manager": "Zoey Zapata",
   "Phone": "555.334.8756",
-  "Dept": "Exec Officers"
+  "Dept": {
+    "Name": "Exec Officers",
+    "Icon": "users"
+  }
 }]

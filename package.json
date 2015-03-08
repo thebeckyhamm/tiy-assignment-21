@@ -16,6 +16,7 @@
     "gulp-wrap": "~0.11.0",
     "gulp-handlebars": "~3.0.1",
     "gulp-concat": "~2.5.2",
-    "gulp-less": "~3.0.1"
+    "gulp-less": "~3.0.1",
+    "browser-sync": "~2.2.3"
   }
 }
