@@ -50,44 +50,24 @@ var Heading = (function() {
     return Heading;
 })();
 
-// var Row = new Backbone.View.extend({
+var Row = Backbone.View.extend({
 
-//     template: JST["tr"],
-//     tagName: "tbody",
+    template: JST["tr"],
+    tagName: "tr",
 
-//     initialize: function() {
-//        this.listenTo(this.model, "change", this.render);
-//      },
+    initialize: function() {
+       this.listenTo(this.model, "change", this.render);
+     },
 
-//     render: function() {
-//         this.$el.append( template(this.model.toJSON()) );
-//         return this;
-//     }
+    render: function() {
+        this.$el.append( this.template(this.model.toJSON()) );
+        return this;
+    }
 
-// });
+});
 
 
-var Row = (function(){
-
-    var template = JST["tr"];
-
-    function Row(model) {
-        this.model = model;
-        this.$tbody = $("tbody");
-    };
-
-    Row.prototype = {
-
-        render: function() {
-        return this.$tbody.append( template(this.model.toJSON()) );
-
-        }
-    };
-
-    return Row;
-})();
-
-var Filter = new Backbone.View.extend({
+var Filter = Backbone.View.extend({
 
 //     template: JST["filter"],
 
@@ -106,8 +86,9 @@ $(function(){
 
 
     employees.on("add", function(employee) {
-        var row = new Row(employee);
-        row.render();
+        var row = new Row({model: employee});
+        console.log(row);
+        $("tbody").append(row.render().el);
     });
 
     employees.fetch().done(function() {
