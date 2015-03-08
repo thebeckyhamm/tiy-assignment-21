@@ -69,12 +69,12 @@ var Row = Backbone.View.extend({
 
 var Filter = Backbone.View.extend({
 
-//     template: JST["filter"],
+    template: JST["filter"],
 
-//     render: function() {
-//          this.$el.html( this.template(this.model.toJSON()) );
-//          return this;
-//      }
+    render: function() {
+         this.$el.html( this.template(this.model.toJSON()) );
+         return this;
+     }
 
  });
 
@@ -87,14 +87,13 @@ $(function(){
 
     employees.on("add", function(employee) {
         var row = new Row({model: employee});
-        console.log(row);
         $("tbody").append(row.render().el);
     });
 
     employees.fetch().done(function() {
         var allKeys = []
         var uniqKeys;
-        var depts = [];
+        var rawDepts = [];
 
         employees.each(function(employee) {
             allKeys.push(employee.keys());
@@ -106,17 +105,21 @@ $(function(){
         heading.render();
 
 
-        depts = employees.pluck("Dept");
-        depts = _.uniq(depts);
-        depts = _.map(depts, function(dept) {
-            return {filter: dept};
+        rawDepts = employees.pluck("Dept");
+        var depts = new Departments(rawDepts);
+
+
+        depts.each(function(dept) {
+            //console.log(dept.get("Name"));
+            var filter = new Filter({model: dept});
+            console.log(filter);
+            $(".filters").append(filter.render().el);
         });
 
-        // _.each(depts, function(dept){
-        //     var filter = new Filter({model: dept});
-        //     $(".filters").append(filter.render().el);
+        _.each(depts, function(dept){
+            //console.log(filter);
             
-        // });
+        });
 
 
     });

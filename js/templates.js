@@ -1,10 +1,10 @@
 this["JST"] = this["JST"] || {};
 this["JST"]["filter"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-  var stack1, lambda=this.lambda, escapeExpression=this.escapeExpression;
+  var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
   return "<label><input type=\"checkbox\"><span class=\"fa fa-"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Dept : depth0)) != null ? stack1.Icon : stack1), depth0))
+    + escapeExpression(((helper = (helper = helpers.Icon || (depth0 != null ? depth0.Icon : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Icon","hash":{},"data":data}) : helper)))
     + "\"></span>"
-    + escapeExpression(lambda(((stack1 = (depth0 != null ? depth0.Dept : depth0)) != null ? stack1.Name : stack1), depth0))
+    + escapeExpression(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Name","hash":{},"data":data}) : helper)))
     + "</label>\n";
 },"useData":true});
 this["JST"] = this["JST"] || {};
