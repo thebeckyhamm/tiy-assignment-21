@@ -1,8 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Maven+Pro:400,700);
+body {
+  font-family: "Maven Pro", sans-serif;
+}
 table {
   border-collapse: collapse;
   border: 1px solid #565A5C;
-  font-family: "Maven Pro", sans-serif;
 }
 table tr {
   border-bottom: 1px solid #565A5C;
@@ -17,4 +19,11 @@ table th {
 table td {
   background-color: #F5F5F5;
   padding: .5em;
+}
+.filters {
+  background-color: #F5F5F5;
+  border: 1px solid #565A5C;
+  float: left;
+  margin: 0 1em;
+  padding: 1em;
 }

@@ -93,7 +93,7 @@ $(function(){
     employees.fetch().done(function() {
         var allKeys = []
         var uniqKeys;
-        var rawDepts = [];
+        var allDepts = [];
 
         employees.each(function(employee) {
             allKeys.push(employee.keys());
@@ -105,22 +105,20 @@ $(function(){
         heading.render();
 
 
-        rawDepts = employees.pluck("Dept");
-        var depts = new Departments(rawDepts);
+        allDepts = employees.pluck("Dept");
+
+        // found this on stack overflow
+        allDepts = _.uniq(allDepts, function(dept){
+            return JSON.stringify(dept);
+        });
+
+        var depts = new Departments(allDepts);
 
 
         depts.each(function(dept) {
-            //console.log(dept.get("Name"));
             var filter = new Filter({model: dept});
-            console.log(filter);
             $(".filters").append(filter.render().el);
         });
-
-        _.each(depts, function(dept){
-            //console.log(filter);
-            
-        });
-
 
     });
 
