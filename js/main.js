@@ -14,40 +14,32 @@ var Departments = Backbone.Collection.extend({
 var FilteredEmployees = Employees.extend({});
 
 
-var Heading = (function() {
 
-    var template = JST["th"];
 
-    function Heading(data) {
-        this.data = data;
-        this.$tr = $("<tr />");
-    };
+var HeadingView = Backbone.View.extend({
 
-    Heading.prototype = {
+    template: JST["th"],
+    tagName: "tr",
 
-        mapping: function() {
-            return _.map(this.data, function(value) {
-                return {"key": value};
-            });
-        },
+    mapping: function() {
+        return _.map(this.model, function(value) {
+            return {"key": value};
+        });
+    },
 
-        render: function() {
-            var app = this;
+    render: function() {
+        var columnNames = this.mapping();
+        _.each(columnNames, function(name) {
+            this.$el.append( this.template(name) );   
+        }, this);
 
-            var columnNames = app.mapping();
-            _.each(columnNames, function(name) {
-                app.$tr.append( template(name) );   
-            });
+        return this;
+    }
 
-            $("thead").html(app.$tr);
-        }
+});
 
-    };
 
-    return Heading;
-})();
-
-var Row = Backbone.View.extend({
+var EmployeeView = Backbone.View.extend({
 
     template: JST["tr"],
     tagName: "tr",
@@ -64,7 +56,7 @@ var Row = Backbone.View.extend({
 });
 
 
-var Filter = Backbone.View.extend({
+var CheckboxView = Backbone.View.extend({
 
     template: JST["filter"],
 
@@ -85,7 +77,7 @@ var Filter = Backbone.View.extend({
 
      updateCollection: function() {
         var checkedDept = this.model.get("Name");
-        //alert("we want to filter " + checkedDept);
+        alert("we want to filter " + checkedDept);
         //console.log(checkedDept);
         this.trigger("refilter", checkedDept);
      }
@@ -93,9 +85,6 @@ var Filter = Backbone.View.extend({
  });
 
 var employees = new FilteredEmployees();
-
-// get checkedDept from Filter view to employees, 
-// filter on that for the right objects
 
 
 $(function(){
@@ -111,9 +100,10 @@ $(function(){
 
 
     employees.on("add remove", function(employee) {
-        var row = new Row({model: employee});
+        var row = new EmployeeView({model: employee});
         $("tbody").append(row.render().el);
     });
+
 
     employees.fetch().done(function() {
         var allKeys = []
@@ -126,9 +116,8 @@ $(function(){
         });
         uniqKeys = _.uniq(_.flatten(allKeys));
 
-        var heading = new Heading(uniqKeys);
-        heading.render();
-
+        var heading = new HeadingView({ model:uniqKeys});
+        $("thead").html(heading.render().el);
 
 
 
@@ -141,8 +130,8 @@ $(function(){
         var depts = new Departments(allDepts);
 
         depts.each(function(dept) {
-            var filter = new Filter({model: dept});
-            $(".filters").append(filter.render().el);
+            var checkboxView = new CheckboxView({model: dept});
+            $(".filters").append(checkboxView.render().el);
         });
 
     });
