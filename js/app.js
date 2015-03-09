@@ -1,7 +1,6 @@
 var App = (function(){
     
     function App() {
-        var allDepts;
         _.extend(this, Backbone.Events);
 
         this.allEmployees = new Employees();
@@ -13,7 +12,46 @@ var App = (function(){
             $("tbody").append(this.employeeView.render().el);
         });
 
-        this.allEmployees.fetch();
+        this.allEmployees.fetch().done(function(data){
+            var allDepts;
+            var allKeys = [];
+            this.data = data;
+
+            _.each(this.data, function(employee) {
+                allKeys.push(_.keys(employee));    
+            });
+            uniqKeys = _.uniq(_.flatten(allKeys));
+
+            var heading = new HeadingView({ model:uniqKeys});
+            $("thead").html(heading.render().el);
+
+
+
+            allDepts = _.pluck(this.data, "Dept");
+            // found this on stack overflow
+            allDepts = _.uniq(allDepts, function(dept){
+                return JSON.stringify(dept);
+            });
+
+            var depts = new Departments(allDepts);
+
+            depts.each(function(dept) {
+                var checkboxView = new CheckboxView({model: dept});
+                $(".filters").append(checkboxView.render().el);
+
+            });
+
+
+
+
+
+
+
+
+
+
+
+        });
 
 
 

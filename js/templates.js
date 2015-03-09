@@ -1,11 +1,11 @@
 this["JST"] = this["JST"] || {};
 this["JST"]["checkbox"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<label><input type=\"checkbox\">&emsp;<span class=\"fa fa-"
+  return "<label>\n    <input type=\"checkbox\">&emsp;<span class=\"fa fa-"
     + escapeExpression(((helper = (helper = helpers.Icon || (depth0 != null ? depth0.Icon : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Icon","hash":{},"data":data}) : helper)))
     + "\"></span>&emsp;"
     + escapeExpression(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Name","hash":{},"data":data}) : helper)))
-    + "</label>\n";
+    + "\n</label>\n";
 },"useData":true});
 this["JST"] = this["JST"] || {};
 this["JST"]["th"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
