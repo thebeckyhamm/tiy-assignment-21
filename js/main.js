@@ -11,10 +11,7 @@ var Departments = Backbone.Collection.extend({
     model: Dept
 });
 
-var FilteredEmployees = Employees.extend({
-
-
-});
+var FilteredEmployees = Employees.extend({});
 
 
 var Heading = (function() {
@@ -72,7 +69,7 @@ var Filter = Backbone.View.extend({
     template: JST["filter"],
 
     events: {
-        "click [type='checkbox']" : "_updateCollection"
+        "click [type='checkbox']" : "updateCollection"
     },
 
     initialize: function() {
@@ -86,24 +83,31 @@ var Filter = Backbone.View.extend({
          return this;
      },
 
-     _updateCollection: function() {
+     updateCollection: function() {
         var checkedDept = this.model.get("Name");
-        alert("we want to filter " + checkedDept);
-        this.trigger("refilter");
-        return checkedDept;
+        //alert("we want to filter " + checkedDept);
+        //console.log(checkedDept);
+        this.trigger("refilter", checkedDept);
      }
 
  });
 
-
 var employees = new FilteredEmployees();
+
+// get checkedDept from Filter view to employees, 
+// filter on that for the right objects
 
 
 $(function(){
 
-    // employees.on("refilter", function() {
-    //     employees.filter()
-    // })
+
+    employees.on("refilter", function(checkedDept) {
+        alert(checkedDept);
+        // employees.filter(function(employee) {
+        //     return checkedDept === employee.Dept.Name;
+        // });
+        // console.log(employees);
+    });
 
 
     employees.on("add remove", function(employee) {
