@@ -1,12 +1,22 @@
 this["JST"] = this["JST"] || {};
 this["JST"]["checkbox"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
-  return "<label>\n    <input type=\"checkbox\">&emsp;<span class=\"fa fa-"
+  return "<label>\n    <input type=\"checkbox\" data-name=\""
+    + escapeExpression(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Name","hash":{},"data":data}) : helper)))
+    + "\">&emsp;<span class=\"fa fa-"
     + escapeExpression(((helper = (helper = helpers.Icon || (depth0 != null ? depth0.Icon : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Icon","hash":{},"data":data}) : helper)))
     + "\"></span>&emsp;"
     + escapeExpression(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"Name","hash":{},"data":data}) : helper)))
     + "\n</label>\n";
 },"useData":true});
+this["JST"] = this["JST"] || {};
+this["JST"]["checkboxes"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "<div class=\"filters\">\n    <h4>Filters</h4>\n  \n</div>";
+  },"useData":true});
+this["JST"] = this["JST"] || {};
+this["JST"]["table"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
+  return "<table>\n    <thead></thead>\n    <tbody></tbody>\n</table>";
+  },"useData":true});
 this["JST"] = this["JST"] || {};
 this["JST"]["th"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
   var helper, functionType="function", helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;

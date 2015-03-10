@@ -1,12 +1,12 @@
-var Employee = Backbone.Model.extend({});
+var EmployeeModel = Backbone.Model.extend({});
 
-var Employees = Backbone.Collection.extend({
+var EmployeesCollection = Backbone.Collection.extend({
     url: "js/data.json",
-    model: Employee
+    model: EmployeeModel
 });
 
-var Dept = Backbone.Model.extend({});
+var DeptModel = Backbone.Model.extend({});
 
-var Departments = Backbone.Collection.extend({
-    model: Dept
+var DepartmentsCollection = Backbone.Collection.extend({
+    model: DeptModel
 });
