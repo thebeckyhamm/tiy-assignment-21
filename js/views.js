@@ -123,10 +123,10 @@ var CheckboxesView = Backbone.View.extend({
     onCheck: function(e) {
         var checked = [];
 
-        $node = this.$(e.currentTarget);
-
+        // get all nodes
         $nodes = this.$("input");
 
+        // for each node, if it's checked, add to checked array
         $nodes.each(function() {
             var $node = $(this);
             if( $node.is(":checked") ) {
@@ -134,6 +134,17 @@ var CheckboxesView = Backbone.View.extend({
             }
         });
 
+        // if there is nothing in checked, then add
+        // each data name into checked
+        if (checked.length === 0) {
+
+            $nodes.each(function() {
+                var $node = $(this);
+                checked.push($node.data("name"));
+            });
+        }
+
+        // trigger dept:filter
         this.trigger("dept:filter", checked);
         
     }
