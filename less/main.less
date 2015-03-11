@@ -3,6 +3,7 @@
 @dark-blue: #1A334B;
 @light-blue: #5999D9;
 @gray: gray;
+@light-gray: #9E9E9E;
 
 body {
     font-family: "Arial", sans-serif; 
@@ -11,7 +12,8 @@ body {
 
 
 header {
-    background-color: @dark-blue;
+    background-color: @light-gray;
+    border-bottom: 7px ridge @gray;
     color: @light-blue;
     h3 {
         display: inline-block;
@@ -20,6 +22,10 @@ header {
         margin: 0;
         padding: .5em;
         text-transform: uppercase;
+    }
+    img {
+        max-height: 100px;
+        padding: .5em;
     }
 
 
@@ -38,19 +44,29 @@ a {
     padding: .5em;
 }
 
+
+.content {
+    float: left;
+    width: 1000px;
+}
+
 .banner {
+    background-color: yellow;
+    color: red;
+    display: inline-block;
     font-family: "Times New Roman";
     font-size: 1.5rem;
     font-style: italic;
     font-weight: bold;
+    margin-left: 1em;
     margin-top: 1em;
 }
-
 
 .table {
     float: left;
     margin-top: 1rem;
 }
+
 table {
     //border-collapse: collapse;
     border: 7px ridge @gray;
