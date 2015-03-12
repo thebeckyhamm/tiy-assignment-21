@@ -5,6 +5,10 @@
 @gray: gray;
 @light-gray: #9E9E9E;
 
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Arial", sans-serif; 
     margin: 0;  
@@ -36,6 +40,7 @@ nav {
     background-color: @light-blue;
     border-right: 7px ridge @gray;
     float: left;
+    width: 20%;
     min-height: 100vh;
 }
 a {
@@ -47,7 +52,7 @@ a {
 
 .content {
     float: left;
-    width: 1200px;
+    width: 80%;
 }
 
 .banner {
@@ -65,12 +70,12 @@ a {
 .table {
     float: left;
     margin-top: 1rem;
+    width: calc(~"80% - 2em");
 }
 
 table {
     //border-collapse: collapse;
     border: 7px ridge @gray;
-    width: 800px;
     tr {
         //border-bottom: 1px solid @gray;
     }
@@ -94,7 +99,7 @@ table {
     box-shadow: inset 0 0 0 2px white; 
     float: left;
     margin: 1em;
-    //padding: 1em;
+    width: 20%;
     h4 {
         background-color: @dark-blue;
         color: white;
